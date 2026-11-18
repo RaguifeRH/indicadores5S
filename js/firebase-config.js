@@ -1,8 +1,5 @@
 /* ============================================================
-   Configuração do Firebase — PREENCHER
-
-   Cole aqui o bloco que o Firebase mostra em
-   Console ▸ Configurações do projeto ▸ Seus apps ▸ App da Web ▸ SDK.
+   Configuração do Firebase — projeto indicadores-5s
 
    Estas chaves são públicas por natureza: num site estático elas
    sempre ficam visíveis no navegador. Quem protege os dados são as
@@ -11,14 +8,12 @@
    ============================================================ */
 
 export const firebaseConfig = {
-  apiKey:            "COLE_AQUI",
-  authDomain:        "COLE_AQUI.firebaseapp.com",
-  projectId:         "COLE_AQUI",
-  storageBucket:     "COLE_AQUI.appspot.com",
-  messagingSenderId: "COLE_AQUI",
-  appId:             "COLE_AQUI"
+  apiKey:            "AIzaSyCm2EB-tLh_hWfXA6P3Q89kh7pSmzYQKu4",
+  authDomain:        "indicadores-5s.firebaseapp.com",
+  projectId:         "indicadores-5s",
+  storageBucket:     "indicadores-5s.firebasestorage.app",
+  messagingSenderId: "972190351264",
+  appId:             "1:972190351264:web:03f41e0fc4ffa348072ec5"
 };
 
-// Deixe true enquanto a configuração acima não estiver preenchida:
-// o sistema abre em modo demonstração, sem gravar nada.
 export const CONFIGURADO = !String(firebaseConfig.projectId).includes("COLE_AQUI");
