@@ -1,0 +1,13 @@
+<!-- PROVISÓRIO — substituir pelo arquivo oficial da marca.
+     O logotipo "raguife" usa tipografia exclusiva e nunca deve ser
+     redigitado: troque este arquivo pelo PNG/SVG oficial mantendo o
+     nome assets/logo.svg, ou aponte o src no index.html para o novo
+     arquivo. Este é apenas o quadrado de apoio com os três pontos. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Raguife">
+  <rect width="40" height="40" fill="#9DCD46"/>
+  <circle cx="11" cy="30" r="3.2" fill="#024F2B"/>
+  <circle cx="20" cy="30" r="3.2" fill="#024F2B"/>
+  <circle cx="29" cy="30" r="3.2" fill="#024F2B"/>
+  <path d="M10 22.5c0-5.2 2.6-9 6-9 2.5 0 4 1.8 4 4.3M30 22.5c0-5.2-2.6-9-6-9-2.5 0-4 1.8-4 4.3"
+        stroke="#024F2B" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+</svg>

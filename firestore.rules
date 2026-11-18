@@ -1,0 +1,82 @@
+rules_version = '2';
+
+// ============================================================
+// Programa 5S — Raguife
+//
+// Regra geral:
+//   • o PAINEL é aberto  → qualquer pessoa com o link lê os resultados
+//     (nota por senso, resultado do setor, quantidade de NC)
+//   • o DETALHE é fechado → observações da auditoria e plano de ação
+//     só para quem estiver logado
+//   • LANÇAR só para auditor → precisa estar logado E ter um documento
+//     em usuarios/{uid}
+//
+// Como cadastrar um auditor:
+//   1. Authentication ▸ Users ▸ Add user (e-mail e senha)
+//   2. copie o UID gerado
+//   3. Firestore ▸ coleção "usuarios" ▸ documento com esse UID:
+//        nome:  "Tatiana Carla B. Carmona"
+//        papel: "auditor"      (use "gestor" para quem pode mexer
+//                               nas configurações do programa)
+//
+// Publicar estas regras:  firebase deploy --only firestore:rules
+// ou cole o conteúdo em Firestore ▸ Regras ▸ Publicar.
+// ============================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function logado() {
+      return request.auth != null;
+    }
+    function cadastrado() {
+      return logado()
+        && exists(/databases/$(database)/documents/usuarios/$(request.auth.uid));
+    }
+    function papel() {
+      return get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.papel;
+    }
+    function auditor() {
+      return cadastrado() && (papel() == 'auditor' || papel() == 'gestor');
+    }
+    function gestor() {
+      return cadastrado() && papel() == 'gestor';
+    }
+
+    // Resumo de cada auditoria: o que o painel público mostra.
+    // Sem observações e sem nomes — só números.
+    match /resultados/{id} {
+      allow read:  if true;
+      allow write: if auditor();
+    }
+
+    // Auditoria completa: as 25 notas, as observações e os auditores.
+    match /auditorias/{id} {
+      allow read:  if logado();
+      allow write: if auditor();
+    }
+
+    // Plano de ação das não conformidades.
+    match /acoes/{id} {
+      allow read:  if logado();
+      allow write: if auditor();
+    }
+
+    // Objetivo, pesos e lista de setores. O painel público precisa ler.
+    match /config/{id} {
+      allow read:  if true;
+      allow write: if gestor();
+    }
+
+    // Quem é auditor. Criado à mão no console — nunca pelo site.
+    match /usuarios/{uid} {
+      allow read:  if logado();
+      allow write: if false;
+    }
+
+    // Nada mais é acessível.
+    match /{documento=**} {
+      allow read, write: if false;
+    }
+  }
+}

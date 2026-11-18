@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Programa 5S — auditoria interna, plano de ação e resultados.">
+<meta name="theme-color" content="#024F2B">
+<title>Programa 5S — Auditoria Interna</title>
+<link rel="icon" href="assets/logo.svg">
+<link rel="apple-touch-icon" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap hd">
+    <img class="logo" src="assets/logo.svg" alt="Raguife">
+    <div class="tt">
+      <div class="sub">Programa 5S</div>
+      <h1>Auditoria Interna</h1>
+    </div>
+    <div class="spacer"></div>
+    <select id="selPeriodo" aria-label="Período"></select>
+    <div class="who" id="who"></div>
+  </div>
+</header>
+
+<nav><div class="wrap"><div class="tabs" role="tablist" id="tabs"></div></div></nav>
+
+<main><div class="wrap" id="view"></div></main>
+
+<footer class="rodape"><div class="wrap">
+  Programa 5S · Raguife — Nutrição Animal · os resultados do painel são públicos; observações e plano de ação exigem login.
+</div></footer>
+
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

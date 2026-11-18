@@ -1,0 +1,11 @@
+# chave de serviço do Firebase — NUNCA versionar
+seed/chave.json
+**/serviceAccount*.json
+*-firebase-adminsdk-*.json
+
+# dependências do script de importação
+node_modules/
+package-lock.json
+
+.DS_Store
+.firebase/
